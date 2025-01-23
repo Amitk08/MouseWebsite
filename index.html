@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming Mouse - PC365</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      #magnifier {
+        width: 10%;
+        height: 10%;
+        position: absolute;
+        border: 2px solid gray;
+        border-radius: 50%;
+        background-size: 200%;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        display: none;
+      }
+      header.fixed {
+        animation: fadeInDown 1s ease-in-out;
+      }
+      .animate-bounce {
+        animation: bounce 1.5s infinite;
+      }
+      .fade-in {
+        animation: fadeIn 2s ease-in-out;
+      }
+      .hover-scale:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s;
+      }
+      .btn-glow:hover {
+        box-shadow: 0px 0px 15px rgba(99, 102, 241, 0.5);
+      }
+      .animate-bounce {
+        animation: bounce 1.5s infinite;
+      }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+          html.classList.add("dark");
+        }
+
+        themeToggle.addEventListener("click", () => {
+          if (html.classList.contains("dark")) {
+            html.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          } else {
+            html.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      });
+
+      function changeMainImage(src) {
+        document.getElementById("mainImage").src = src;
+      }
+
+      function changeLanguage(lang) {
+        const textElements = document.querySelectorAll("[data-en], [data-es]");
+        textElements.forEach((el) => {
+          el.textContent = lang === "es" ? el.dataset.es : el.dataset.en;
+        });
+      }
+
+      function toggleSearchBox() {
+  const searchBox = document.getElementById("search-box");
+  searchBox.classList.toggle("hidden");
+}
+
+function toggleCart() {
+  const cartMenu = document.getElementById("cart-menu");
+  cartMenu.classList.toggle("hidden");
+}
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainImage = document.getElementById("mainImage");
+        const magnifier = document.getElementById("magnifier");
+
+        mainImage.addEventListener("mousemove", function (e) {
+          const rect = mainImage.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const bgX = (x / rect.width) * 100;
+          const bgY = (y / rect.height) * 100;
+
+          magnifier.style.left = `${x}px`;
+          magnifier.style.top = `${y}px`;
+          magnifier.style.backgroundImage = `url(${mainImage.src})`;
+          magnifier.style.backgroundPosition = `${bgX}% ${bgY}%`;
+          magnifier.style.backgroundSize = `${rect.width * 2}px ${
+            rect.height * 2
+          }px`;
+          magnifier.style.display = "block";
+        });
+
+        mainImage.addEventListener("mouseleave", () => {
+          magnifier.style.display = "none";
+        });
+      });
+    </script>
+  </head>
+  <body
+    class="bg-gradient-to-r bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-gray-900 dark:to-gray-700 dark:text-gray-100 transition-all"
+  >
+    <div class="max-w-9xl mx-auto p-6">
+        
+      <!-- <header
+        fixed
+        class="flex justify-between items-center mb-6 p-4 shadow-lg rounded-lg bg-sky-100"
+      >
+        <div class="border-b border-gray-200 dark:border-gray-700">
+          <ul
+            class="flex flex-wrap -mb-px items-center space-x-4 text-sm font-medium text-center text-gray-500 dark:text-gray-400"
+          >
+            <img src="assets/image/logo.png" alt="Company Logo" class="h-8" />
+            <li class="me-2">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+              >
+                <svg
+                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
+                  /></svg
+                >Home
+              </a>
+            </li>
+            <li class="me-2">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-purple-900 dark:border-blue-500 group"
+                aria-current="page"
+              >
+                <svg
+                  class="w-4 h-4 me-2 text-blue-600 dark:text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 18 18"
+                >
+                  <path
+                    d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+                  /></svg
+                >Gaming Mouse
+              </a>
+            </li>
+            <li class="me-2">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+              >
+                <svg
+                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"
+                  /></svg
+                >Mechanical Keyboard
+              </a>
+            </li>
+            <li class="me-2">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+              >
+                <svg
+                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 18 20"
+                >
+                  <path
+                    d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"
+                  /></svg
+                >Accessories
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button
+            id="theme-toggle"
+            class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
+          >
+            🌙
+          </button>
+          <select
+            onchange="changeLanguage(this.value)"
+            class="bg-sky-100 dark:bg-sky-400 p-1 rounded-md"
+          >
+            <option value="en">English 🇪🇸</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </header> -->
+      <header
+  fixed
+  class="flex justify-between items-center mb-6 p-4 shadow-lg rounded-lg bg-sky-100"
+>
+  <!-- Left Section: Logo and Navigation -->
+  <div class="border-b border-gray-200 dark:border-gray-700">
+    <ul
+      class="flex flex-wrap -mb-px items-center space-x-4 text-sm font-medium text-center text-gray-500 dark:text-gray-400"
+    >
+      <img src="assets/image/logo.png" alt="Company Logo" class="h-8" />
+      <li class="me-2">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+        >
+          <svg
+            class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
+            /></svg
+          >Home
+        </a>
+      </li>
+      <li class="me-2">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-purple-900 dark:border-blue-500 group"
+          aria-current="page"
+        >
+          <svg
+            class="w-4 h-4 me-2 text-blue-600 dark:text-blue-500"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 18 18"
+          >
+            <path
+              d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+            /></svg
+          >Gaming Mouse
+        </a>
+      </li>
+      <li class="me-2">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+        >
+          <svg
+            class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"
+            /></svg
+          >Mechanical Keyboard
+        </a>
+      </li>
+      <li class="me-2">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
+        >
+          <svg
+            class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 18 20"
+          >
+            <path
+              d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"
+            /></svg
+          >Accessories
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Section: Icons and Interactivity -->
+  <div class="flex items-center space-x-4">
+    <!-- Search Icon -->
+    <div class="relative">
+      <button
+        id="search-icon"
+        class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
+        onclick="toggleSearchBox()"
+      >
+        🔍
+      </button>
+      <input
+        id="search-box"
+        type="text"
+        placeholder="Search items..."
+        class="absolute top-10 left-0 hidden w-64 p-2 border border-gray-300 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white"
+      />
+    </div>
+
+    <!-- Cart Icon -->
+    <div class="relative">
+      <button
+        id="cart-icon"
+        class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
+        onclick="toggleCart()"
+      >
+        🛒
+      </button>
+      <div
+        id="cart-menu"
+        class="absolute top-10 right-0 hidden w-72 p-4 border border-gray-300 rounded-md shadow-lg bg-white dark:bg-gray-800 dark:text-white"
+      >
+        <h3 class="text-lg font-semibold mb-4">Shopping Cart</h3>
+        <p>Your cart is empty.</p>
+        <!-- Add dynamic cart items here -->
+      </div>
+    </div>
+
+    <!-- Login Icon -->
+    <button class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full">
+      👤
+    </button>
+
+    <!-- Theme Toggle -->
+    <button
+      id="theme-toggle"
+      class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
+    >
+      🌙
+    </button>
+
+    <!-- Language Selector -->
+    <select
+      onchange="changeLanguage(this.value)"
+      class="bg-sky-100 dark:bg-sky-400 p-1 rounded-md"
+    >
+      <option value="en">English 🇪🇸</option>
+      <option value="es">Español</option>
+    </select>
+  </div>
+</header>
+
+      <!-- </main>
+      </section> -->
+
+      <!-- Product Section -->
+      <section
+        class=" mt-6 flex flex-col md:flex-row bg-sky-100 dark:bg-gray-800 dark:from-gray-900 dark:to-gray-700 rounded-lg shadow-md overflow-hidden"
+      >
+        <main class="container mx-auto p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="relative">
+              <!-- Main Image with Magnifying Glass -->
+              <img
+                id="mainImage"
+                src="assets/image/img1.jpg"
+                alt="PC365 Gaming Mouse"
+                class="w-full h-auto rounded-lg shadow-md cursor-pointer"
+              />
+              <div id="magnifier"></div>
+              <div class="flex space-x-7 mt-4">
+                <img
+                  onclick="changeMainImage('assets/image/img2.jpg')"
+                  src="assets/image/img2.jpg"
+                  alt="Thumbnail 1"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img3.jpg')"
+                  src="assets/image/img3.jpg"
+                  alt="Thumbnail 2"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img4.jpg')"
+                  src="assets/image/img4.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img5.jpg')"
+                  src="assets/image/img5.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img6.jpg')"
+                  src="assets/image/img6.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img7.jpg')"
+                  src="assets/image/img7.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img8.jpg')"
+                  src="assets/image/img8.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+                <img
+                  onclick="changeMainImage('assets/image/img9.jpg')"
+                  src="assets/image/img9.jpg"
+                  alt="Thumbnail 3"
+                  class="w-16 h-16 rounded-lg cursor-pointer hover:ring-2 ring-blue-400"
+                />
+              </div>
+            </div>
+            <div>
+              <h1
+                class="text-4xl font-bold bg-gradient-to-r from-gray-500 to-indigo-600 text-transparent bg-clip-text"
+                data-en="PC365 Wireless Gaming Mouse"
+                data-es="Ratón inalámbrico para juegos PC365"
+              >
+                PC365 Wireless Gaming Mouse
+              </h1>
+              <p
+                class="text-2xl font-bold mt-2 from-gray-500 to-purple-600"
+                data-en="PC365 Wireless Gaming Mouse,Tri-Mode 2.4G/USB-C/Bluetooth Mouse
+                Up to 10000DPI,RGB Backlit Ergonomic Mouse with 8 Programmable
+                Buttons"
+                data-es="Ratón inalámbrico para juegos PC365, ratón trimodal 2.4G/USB-C/Bluetooth
+                Hasta 10000DPI, ratón ergonómico retroiluminado RGB con 8 programables
+                Botones"
+              >
+                PC365 Wireless Gaming Mouse,Tri-Mode 2.4G/USB-C/Bluetooth Mouse
+                Up to 10000DPI,RGB Backlit Ergonomic Mouse with 8 Programmable
+                Buttons
+              </p>
+              <div class="flex items-center space-x-4 mt-4">
+                <span class="text-xl font-bold text-blue-500">$29.99</span>
+                <span class="text-gray-500 line-through">$39.99</span>
+                <span data-en="Save $10.00" data-es="Ahorra $10.00"
+                  >Save $10.00</span
+                >
+              </div>
+              <div class="flex items-center mt-6 space-x-4">
+                <button
+                  class="px-4 py-2 bg-gray-200 hover:bg-gray-300 transition rounded"
+                >
+                  -
+                </button>
+                <span>1</span>
+                <button
+                  class="px-4 py-2 bg-gray-200 hover:bg-gray-300 transition rounded"
+                >
+                  +
+                </button>
+                <!-- <div class="flex space-x-4 mb-6"> -->
+              </div>
+              <div class="mt-12">
+                <button
+                  class="w-full h-12 flex justify-center items-center gap-2 bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition delay-150 duration-300 ease-in-out"
+                  data-en="Add to Cart"
+                  data-es="añadir a la cesta"
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                    />
+                  </svg>
+                  Add to Cart
+                </button>
+
+                <button
+                  class="w-full mt-6 h-12 flex justify-center items-center gap-2 bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition delay-150 duration-300 ease-in-out"
+                  data-en="Pay With Paypal"
+                  data-es="pagar con paypal"
+                  >
+                  Pay With Paypal
+                </button>
+
+                <button
+                  class="w-full mt-6 h-12 flex justify-center items-center gap-2 bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition delay-150 duration-300 ease-in-out"
+                  data-en=" Pay With GPay"
+                  data-es="Pagar con GPay"
+                  >
+                  Pay With GPay
+                </button>
+              </div>
+              <!-- Call-to-Action and Subscription Discount -->
+              <div
+                class="mt-12 p-4 bg-gradient-to-r from-blue-100 to-indigo-200 dark:from-blue-800 dark:to-indigo-900 rounded-md"
+              >
+                <p
+                  class="text-1xl font-bold"
+                  data-en="Subscribe to our newsletter and get 10% off your next purchase!"
+                  data-es="¡Suscríbete a nuestro boletín y obtén un 10% de descuento en tu próxima compra!"
+                >
+                  Subscribe to our newsletter and get 10% off your next
+                  purchase!
+                </p>
+                <div class="mt-6 flex space-x-2">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    class="p-2 w-full rounded border-gray-300"
+                  />
+                  <button
+                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+
+      <section
+      class="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6"
+    >
+      <main class="w-full p-6">
+        <div
+          id="custom-controls-gallery"
+          class="relative w-full h-auto"
+          data-carousel="slide"
+        >
+          <!-- Carousel wrapper -->
+          <div class="relative w-full h-[1600px] overflow-hidden rounded-lg">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img
+                src="assets/image/img3.jpg"
+                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt=""
+              />
+            </div>
+            <!-- Item 2 -->
+            <div
+              class="hidden duration-700 ease-in-out"
+              data-carousel-item="active"
+            >
+              <img
+                src="assets/image/img4.jpg"
+                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt=""
+              />
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img
+                src="assets/image/img5.jpg"
+                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt=""
+              />
+            </div>
+            <!-- Item 4 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img
+                src="assets/image/img6.jpg"
+                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt=""
+              />
+            </div>
+            <!-- Item 5 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img
+                src="assets/image/img7.jpg"
+                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="flex justify-center items-center pt-4">
+            <button
+              type="button"
+              class="flex justify-center items-center me-4 h-full cursor-pointer group focus:outline-none"
+              data-carousel-prev
+            >
+              <span
+                class="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white"
+              >
+                <svg
+                  class="rtl:rotate-180 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 5H1m0 0 4 4M1 5l4-4"
+                  />
+                </svg>
+                <span class="sr-only">Previous</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="flex justify-center items-center h-full cursor-pointer group focus:outline-none"
+              data-carousel-next
+            >
+              <span
+                class="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white"
+              >
+                <svg
+                  class="rtl:rotate-180 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+                <span class="sr-only">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </section>
+    
+    
+
+
+      <section
+        class="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6"
+      >
+        <main class="container mx-auto p-6">
+          <div class="">
+            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+              <ul
+                class="flex flex-wrap -mb-px text-sm font-medium text-center"
+                id="default-styled-tab"
+                data-tabs-toggle="#default-styled-tab-content"
+                data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500"
+                data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
+                role="tablist"
+              >
+                <li class="me-2" role="presentation">
+                  <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg"
+                    id="profile-styled-tab"
+                    data-tabs-target="#styled-profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Detail
+                  </button>
+                </li>
+                <li class="me-2" role="presentation">
+                  <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    id="dashboard-styled-tab"
+                    data-tabs-target="#styled-dashboard"
+                    type="button"
+                    role="tab"
+                    aria-controls="dashboard"
+                    aria-selected="false"
+                  >
+                    Customer Reviews
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div id="default-styled-tab-content">
+              <div
+                class="hidden p-4 rounded-lg  dark:bg-gray-800"
+                id="styled-profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <p
+                  class="text-1xl font-bold text-purple-600 dark:text-gray-400"
+                >
+                  ⚡️【Latest Three Modes Connectivity】This wireless gaming
+                  mouse supports 3 modes of connection to meet a variety of user
+                  scenarios. Switch to 2.4G mode and Bluetooth mode when playing
+                  games, saving you the hassle of cable, and getting longer
+                  battery life. If that is not enough, you can also switch to
+                  traditional wired mode with the included rechargeable USB-C
+                  cable . Up to 3 devices can be connected simultaneously, such
+                  gaming mice are perfect for multi-device productivity.
+                  <br />
+                  ⚡️【Immersive RGB Backlight】True RGB effect,16.8 million
+                  colors for choice. This RGB gaming mouse has 7 kinds of RGB
+                  lighting effects such as streamer, horse racing, neon, solid
+                  color, etc to match your game style and desktop layout. All
+                  the light effect parameters can be customized with the
+                  attached software, giving you the best lighting experience.
+                  Light can be also turned off if you don't want it with the
+                  convenient switch under this computer mouse.
+                  <br />
+                  ⚡️【Pixel-Level Tracking Accuracy】The gaming mouse has a
+                  6-level DPI (1200-2400-3500-5000-7000-10000DPI) and 20G
+                  acceleration. This gaming mouse offers pixel-level accuracy
+                  for high-intensity gaming and daily office use. There are also
+                  4 polling rates (125-250-500-1000HZ) to reduce lag and ensure
+                  smooth motion.
+                  <br />
+                  ⚡️【8 Programmable Buttons & Quick Fire Button】RisoPhy
+                  wireless mouse supports macro editing, and all the buttons can
+                  be programmed with the easy-to-use software. The advantage is
+                  that the fire button（✈𝐨𝐧𝐞 𝐜𝐥𝐢𝐜𝐤 = 𝐭𝐫𝐢𝐩𝐥𝐞 𝐜𝐥𝐢𝐜𝐤𝐬） is on the
+                  left side of your index finger which is very easy to click,
+                  giving you the edge you need during those intense FPS battles.
+                  It is also great for MOBA/RTS games. NOTE: Programming
+                  software is only available on Windows and only supports wired
+                  mode.
+                  <br />
+                  ⚡️【Extreme Ergonomics & Professional After-Sales
+                  Service】This Bluetooth gaming mouse is designed for
+                  medium-sized hands, and if you have larger hands, you'll be
+                  amazed at how well-supported this gamer mouse is. Ring finger,
+                  pinky and thumb rest provide you with maxi
+                </p>
+              </div>
+              <div
+                class="hidden p-4 rounded-lg bg- dark:bg-gray-800"
+                id="styled-dashboard"
+                role="tabpanel"
+                aria-labelledby="dashboard-tab"
+              >
+              <section class="py-24 relative">
+                <div class="w-full max-w-7xl px-4 md:px-5 lg:px-6 mx-auto">
+                    <div class="">
+                        <h2 class="font-manrope font-bold text-3xl sm:text-4xl leading-10 text-black mb-8 text-center">
+                            Customer reviews &
+                            rating</h2>
+                        <div class="grid grid-cols-12 mb-11">
+        
+                            <div class="col-span-12 xl:col-span-4 flex items-center">
+                                <div class="box flex flex-col gap-y-4 w-full max-xl:max-w-3xl mx-auto">
+                                    <div class="flex items-center w-full">
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">5</p>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_12042_8589)">
+                                                <path
+                                                    d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                    fill="#FBBF24" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_12042_8589">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="h-2 w-full sm:min-w-[278px] rounded-[30px] bg-gray-200 ml-5 mr-3">
+                                            <span class="h-full w-[30%] rounded-[30px] bg-indigo-500 flex"></span>
+                                        </p>
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">30</p>
+                                    </div>
+                                    <div class="flex items-center w-full">
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">4</p>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_12042_8589)">
+                                                <path
+                                                    d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                    fill="#FBBF24" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_12042_8589">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-5 mr-3">
+                                            <span class="h-full w-[40%] rounded-[30px] bg-indigo-500 flex"></span>
+                                        </p>
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">40</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">3</p>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_12042_8589)">
+                                                <path
+                                                    d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                    fill="#FBBF24" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_12042_8589">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-5 mr-3">
+                                            <span class="h-full w-[20%] rounded-[30px] bg-indigo-500 flex"></span>
+                                        </p>
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">20</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">2</p>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_12042_8589)">
+                                                <path
+                                                    d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                    fill="#FBBF24" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_12042_8589">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-5 mr-3">
+                                            <span class="h-full w-[16%] rounded-[30px] bg-indigo-500 flex"></span>
+                                        </p>
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">16</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">1</p>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_12042_8589)">
+                                                <path
+                                                    d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z"
+                                                    fill="#FBBF24" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_12042_8589">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <p class="h-2 w-full xl:min-w-[278px] rounded-[30px] bg-gray-200 ml-5 mr-3">
+                                            <span class="h-full w-[8%] rounded-[30px] bg-indigo-500 flex"></span>
+                                        </p>
+                                        <p class="font-medium text-lg py-[1px] text-black mr-[2px]">8</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 max-xl:mt-8 xl:col-span-8 xl:pl-8 w-full min-h-[230px]">
+                                <div
+                                    class="grid grid-cols-12 h-full px-8 max-lg:py-8 rounded-3xl bg-gray-100 w-full max-xl:max-w-3xl max-xl:mx-auto">
+                                    <div class="col-span-12 md:col-span-8 flex items-center">
+                                        <div class="flex flex-col sm:flex-row items-center max-lg:justify-center w-full h-full">
+                                            <div
+                                                class="sm:pr-3 sm:border-r border-gray-200 flex items-center justify-center flex-col">
+                                                <h2 class="font-manrope font-bold text-5xl text-black text-center mb-4">4.3</h2>
+                                                <div class="flex items-center gap-3 mb-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                                <p class="font-normal text-lg leading-8 text-gray-400">46 Ratings</p>
+                                            </div>
+        
+                                            <div
+                                                class="sm:pl-3 sm:border-l border-gray-200 flex items-center justify-center flex-col">
+                                                <h2 class="font-manrope font-bold text-5xl text-black text-center mb-4">4.8</h2>
+                                                <div class="flex items-center gap-3 mb-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                                        viewBox="0 0 36 36" fill="none">
+                                                        <g clip-path="url(#clip0_13624_3137)">
+                                                            <path
+                                                                d="M17.1033 2.71738C17.4701 1.97413 18.5299 1.97413 18.8967 2.71738L23.0574 11.1478C23.2031 11.4429 23.4846 11.6475 23.8103 11.6948L33.1139 13.0467C33.9341 13.1659 34.2616 14.1739 33.6681 14.7524L26.936 21.3146C26.7003 21.5443 26.5927 21.8753 26.6484 22.1997L28.2376 31.4656C28.3777 32.2825 27.5203 32.9055 26.7867 32.5198L18.4653 28.145C18.174 27.9919 17.826 27.9919 17.5347 28.145L9.21334 32.5198C8.47971 32.9055 7.62228 32.2825 7.76239 31.4656L9.35162 22.1997C9.40726 21.8753 9.29971 21.5443 9.06402 21.3146L2.33193 14.7524C1.73841 14.1739 2.06593 13.1659 2.88615 13.0467L12.1897 11.6948C12.5154 11.6475 12.7969 11.4429 12.9426 11.1478L17.1033 2.71738Z"
+                                                                fill="#FBBF24" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_13624_3137">
+                                                                <rect width="36" height="36" fill="white" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                                <p class="font-normal text-lg leading-8 text-gray-400">Last Month</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 md:col-span-4 max-lg:mt-8 md:pl-8">
+                                        <div class="flex items-center flex-col justify-center w-full h-full ">
+                                            <button
+                                                class="rounded-full px-6 py-4 bg-indigo-600 font-semibold text-lg text-white whitespace-nowrap mb-6 w-full text-center shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400">Write
+                                                A Review</button>
+                                            <button
+                                                class="rounded-full px-6 py-4 bg-white font-semibold text-lg text-indigo-600 whitespace-nowrap w-full text-center shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-100 hover:shadow-indigo-200">See
+                                                All Reviews</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                           
+                    </div>
+                </div>
+            </section>
+                                                    
+              
+              <div
+                class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                id="styled-settings"
+                role="tabpanel"
+                aria-labelledby="settings-tab"
+              >
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the
+                  <strong class="font-medium text-gray-800 dark:text-white"
+                    >Settings tab's associated content</strong
+                  >. Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classes to control the
+                  content visibility and styling.
+                </p>
+              </div>
+              <div
+                class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                id="styled-contacts"
+                role="tabpanel"
+                aria-labelledby="contacts-tab"
+              >
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the
+                  <strong class="font-medium text-gray-800 dark:text-white"
+                    >Contacts tab's associated content</strong
+                  >. Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classes to control the
+                  content visibility and styling.
+                </p>
+              </div>
+            
+          
+        </main>
+      </section>
+
+      <section
+        class="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6"
+      >
+        <main class="container mx-auto p-6">
+          <div class="grid gap-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img6.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img7.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-4">
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img8.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img9.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img3.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img4.jpg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  class="h-auto max-w-full rounded-lg"
+                  src="assets/image/img5.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+
+      <!-- WhatsApp Button -->
+      <a
+        href="https://wa.me/1234567890"
+        target="_blank"
+        class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all animate-bounce"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12.04 0c6.626 0 12 5.373 12 12 0 2.042-.492 4.013-1.425 5.773l1.426 5.227-5.42-1.412C16.171 22.593 14.131 23 12.04 23 5.373 23 0 17.627 0 12 0 5.373 5.373 0 12.04 0zm3.6 17.084c.251-.251.188-.497-.023-.691-.282-.242-1.103-.607-1.503-.788-.394-.178-.684-.165-.914.074-.251.252-.378.682-.777.616-.395-.066-1.637-.599-2.688-1.649-1.05-1.051-1.582-2.292-1.648-2.687-.066-.399.364-.526.616-.777.239-.23.252-.52.074-.914-.181-.401-.547-1.222-.788-1.503-.194-.211-.44-.274-.691-.023-.594.593-.814 1.334-.875 1.464-.231.475-.338 1.092-.198 1.611.428 1.619 2.292 3.483 3.911 3.911.519.14 1.136.033 1.611-.198.13-.06.871-.281 1.464-.875z"
+          />
+        </svg>
+      </a>
+
+      <section
+      class=" mt-6 flex flex-col md:flex-row bg-sky-100 dark:bg-gray-800 dark:from-gray-900 dark:to-gray-700 rounded-lg shadow-md overflow-hidden"
+    >
+      <main class="container mx-auto p-6">
+          <footer
+            class="  p-6 mt-10 rounded-t-lg"
+          >
+            <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+              <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                  <a href="https://flowbite.com/" class="flex items-center">
+                    <img
+                      src="assets/image/logo.png"
+                      class="h-8 me-3"
+                      alt="FlowBite Logo"
+                    />
+                    <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
+                  </a>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                  <div>
+                    <h2
+                      class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                    >
+                    Company Info
+                    </h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                        <a href="/pages/About-us" class="hover:underline"
+                          >About Us</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/pages/Contact-us"
+                          class="hover:underline"
+                          >Contact Us</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/comments"
+                          class="hover:underline"
+                          >Customer Reviews</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2
+                      class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                    >
+                      Service Center
+                    </h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                        <a
+                          href="#"
+                          class="hover:underline"
+                          >Shipping policy</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="hover:underline"
+                          >Return policy</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://discord.gg/4eeurUVvTy"
+                          class="hover:underline"
+                          >Terms of services</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="hover:underline"
+                          >Privacy policy</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="hover:underline"
+                          >User Manual</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2
+                      class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                    >
+                      Quick Links
+                    </h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                        <a href="#" class="hover:underline">Search</a>
+                      </li>
+                      <li>
+                        <a href="#" class="hover:underline"
+                          >Login</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="hover:underline"
+                          >Register</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="hover:underline"
+                          >Tracking Order</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#" class="hover:underline"
+                          >Blog</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <hr
+                class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+              />
+              <div class="sm:flex sm:items-center sm:justify-between">
+                <span
+                  class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+                  >© 2025
+                  <a href="https://flowbite.com/" class="hover:underline"
+                    >RISOPHY™</a
+                  >. All Rights Reserved.
+                </span>
+                <div class="flex mt-4 sm:justify-center sm:mt-0">
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 8 19"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="sr-only">Facebook page</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 21 16"
+                    >
+                      <path
+                        d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"
+                      />
+                    </svg>
+                    <span class="sr-only">Discord community</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 17"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="sr-only">Twitter page</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="sr-only">GitHub account</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="sr-only">Dribbble account</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </main>
+      </section>
+    </div>
+  </div>
+    </div>
+    </div>
+  </body>
+</html>
