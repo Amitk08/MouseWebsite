@@ -8,9 +8,27 @@
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+       @media (max-width: 1024px) {
+    #nav-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #f8fafc;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    #nav-menu.show {
+      display: flex;
+    }
+  }
       #magnifier {
         width: 10%;
         height: 10%;
@@ -41,6 +59,11 @@
       .animate-bounce {
         animation: bounce 1.5s infinite;
       }
+      @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
       @keyframes fadeInDown {
         from {
           opacity: 0;
@@ -70,6 +93,10 @@
       }
     </style>
     <script>
+        function toggleMenu() {
+    const menu = document.getElementById("nav-menu");
+    menu.classList.toggle("show");
+  }
       document.addEventListener("DOMContentLoaded", () => {
         const themeToggle = document.getElementById("theme-toggle");
         const html = document.documentElement;
@@ -144,111 +171,12 @@ function toggleCart() {
     class="bg-gradient-to-r bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-gray-900 dark:to-gray-700 dark:text-gray-100 transition-all"
   >
     <div class="max-w-9xl mx-auto p-6">
-        
-      <!-- <header
-        fixed
-        class="flex justify-between items-center mb-6 p-4 shadow-lg rounded-lg bg-sky-100"
-      >
-        <div class="border-b border-gray-200 dark:border-gray-700">
-          <ul
-            class="flex flex-wrap -mb-px items-center space-x-4 text-sm font-medium text-center text-gray-500 dark:text-gray-400"
-          >
-            <img src="assets/image/logo.png" alt="Company Logo" class="h-8" />
-            <li class="me-2">
-              <a
-                href="#"
-                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-              >
-                <svg
-                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
-                  /></svg
-                >Home
-              </a>
-            </li>
-            <li class="me-2">
-              <a
-                href="#"
-                class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-purple-900 dark:border-blue-500 group"
-                aria-current="page"
-              >
-                <svg
-                  class="w-4 h-4 me-2 text-blue-600 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 18"
-                >
-                  <path
-                    d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
-                  /></svg
-                >Gaming Mouse
-              </a>
-            </li>
-            <li class="me-2">
-              <a
-                href="#"
-                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-              >
-                <svg
-                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"
-                  /></svg
-                >Mechanical Keyboard
-              </a>
-            </li>
-            <li class="me-2">
-              <a
-                href="#"
-                class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-              >
-                <svg
-                  class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 20"
-                >
-                  <path
-                    d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"
-                  /></svg
-                >Accessories
-              </a>
-            </li>
-          </ul>
-        </div>
+       
+   
 
-        <div class="flex items-center space-x-4">
-          <button
-            id="theme-toggle"
-            class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
-          >
-            🌙
-          </button>
-          <select
-            onchange="changeLanguage(this.value)"
-            class="bg-sky-100 dark:bg-sky-400 p-1 rounded-md"
-          >
-            <option value="en">English 🇪🇸</option>
-            <option value="es">Español</option>
-          </select>
-        </div>
-      </header> -->
-      <header
-  fixed
-  class="flex justify-between items-center mb-6 p-4 shadow-lg rounded-lg bg-sky-100"
+
+<header
+  class="flex flex-wrap justify-between items-center mb-6 p-4 shadow-lg rounded-lg bg-sky-100"
 >
   <!-- Left Section: Logo and Navigation -->
   <div class="border-b border-gray-200 dark:border-gray-700">
@@ -260,7 +188,9 @@ function toggleCart() {
         <a
           href="#"
           class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-        >
+          data-en="Home"
+          data-es="Hogar"
+          >
           <svg
             class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
             aria-hidden="true"
@@ -279,7 +209,9 @@ function toggleCart() {
           href="#"
           class="inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-purple-900 dark:border-blue-500 group"
           aria-current="page"
-        >
+          data-en="Gaming Mouse"
+          data-es="Ratón para juegos"
+          >
           <svg
             class="w-4 h-4 me-2 text-blue-600 dark:text-blue-500"
             aria-hidden="true"
@@ -297,7 +229,9 @@ function toggleCart() {
         <a
           href="#"
           class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-        >
+          data-en="Mechanical Keyboard"
+          data-es="Teclado mecánico"
+          >
           <svg
             class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
             aria-hidden="true"
@@ -315,7 +249,9 @@ function toggleCart() {
         <a
           href="#"
           class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-purple-600 hover:border-gray-300 dark:hover:text-purple-600 group"
-        >
+          data-en="Accessories"
+          data-es="Accesorios"
+          >
           <svg
             class="w-4 h-4 me-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
             aria-hidden="true"
@@ -333,8 +269,7 @@ function toggleCart() {
   </div>
 
   <!-- Right Section: Icons and Interactivity -->
-  <div class="flex items-center space-x-4">
-    <!-- Search Icon -->
+  <div class="w-full lg:w-auto flex flex-wrap justify-end items-center space-x-4 mt-4 lg:mt-0">
     <div class="relative">
       <button
         id="search-icon"
@@ -351,7 +286,6 @@ function toggleCart() {
       />
     </div>
 
-    <!-- Cart Icon -->
     <div class="relative">
       <button
         id="cart-icon"
@@ -366,24 +300,18 @@ function toggleCart() {
       >
         <h3 class="text-lg font-semibold mb-4">Shopping Cart</h3>
         <p>Your cart is empty.</p>
-        <!-- Add dynamic cart items here -->
       </div>
     </div>
 
-    <!-- Login Icon -->
     <button class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full">
       👤
     </button>
-
-    <!-- Theme Toggle -->
     <button
       id="theme-toggle"
       class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full"
     >
       🌙
     </button>
-
-    <!-- Language Selector -->
     <select
       onchange="changeLanguage(this.value)"
       class="bg-sky-100 dark:bg-sky-400 p-1 rounded-md"
@@ -393,6 +321,7 @@ function toggleCart() {
     </select>
   </div>
 </header>
+
 
       <!-- </main>
       </section> -->
@@ -507,7 +436,7 @@ function toggleCart() {
               </div>
               <div class="mt-12">
                 <button
-                  class="w-full h-12 flex justify-center items-center gap-2 bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition delay-150 duration-300 ease-in-out"
+                  class=" transition delay-150 duration-300 ease-in-out ... w-full h-12 flex justify-center items-center gap-2 bg-indigo-500 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition delay-150 duration-300 ease-in-out"
                   data-en="Add to Cart"
                   data-es="añadir a la cesta"
                   >
@@ -533,7 +462,11 @@ function toggleCart() {
                   data-en="Pay With Paypal"
                   data-es="pagar con paypal"
                   >
-                  Pay With Paypal
+                  Pay With Paypal  <img
+                  src="assets/image/paypal.svg"
+                  alt="Thumbnail 3"
+                  class="w-16  justify-center items-center  rounded-lg cursor-pointer "
+                />
                 </button>
 
                 <button
@@ -564,6 +497,8 @@ function toggleCart() {
                   />
                   <button
                     class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                    data-en="Subscribe"
+          data-es="Suscribir"
                   >
                     Subscribe
                   </button>
@@ -584,12 +519,12 @@ function toggleCart() {
           data-carousel="slide"
         >
           <!-- Carousel wrapper -->
-          <div class="relative w-full h-[1600px] overflow-hidden rounded-lg">
+          <div class="relative w-full h-[400px] md:h-[800px] lg:h-[1600px] overflow-hidden rounded-lg">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
               <img
                 src="assets/image/img3.jpg"
-                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -600,7 +535,7 @@ function toggleCart() {
             >
               <img
                 src="assets/image/img4.jpg"
-                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -608,7 +543,7 @@ function toggleCart() {
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
               <img
                 src="assets/image/img5.jpg"
-                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -616,7 +551,7 @@ function toggleCart() {
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
               <img
                 src="assets/image/img6.jpg"
-                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -624,11 +559,12 @@ function toggleCart() {
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
               <img
                 src="assets/image/img7.jpg"
-                class="absolute block w-full h-[1600px] object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
           </div>
+          <!-- Navigation buttons -->
           <div class="flex justify-center items-center pt-4">
             <button
               type="button"
@@ -688,6 +624,7 @@ function toggleCart() {
     </section>
     
     
+    
 
 
       <section
@@ -706,26 +643,30 @@ function toggleCart() {
               >
                 <li class="me-2" role="presentation">
                   <button
-                    class="inline-block p-4 border-b-2 rounded-t-lg"
+                    class="text-2xl inline-block p-4 border-b-2 rounded-t-lg"
                     id="profile-styled-tab"
                     data-tabs-target="#styled-profile"
                     type="button"
                     role="tab"
                     aria-controls="profile"
                     aria-selected="false"
+                    data-en="Detail"
+          data-es="Detalle"
                   >
                     Detail
                   </button>
                 </li>
                 <li class="me-2" role="presentation">
                   <button
-                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    class="text-2xl inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                     id="dashboard-styled-tab"
                     data-tabs-target="#styled-dashboard"
                     type="button"
                     role="tab"
                     aria-controls="dashboard"
                     aria-selected="false"
+                    data-en="Customer Reviews"
+          data-es="Comentarios de clientes"
                   >
                     Customer Reviews
                   </button>
@@ -734,13 +675,94 @@ function toggleCart() {
             </div>
             <div id="default-styled-tab-content">
               <div
-                class="hidden p-4 rounded-lg  dark:bg-gray-800"
+                class="hidden p-4 rounded-lg dark:bg-gray-800 transition-all duration-500 ease-in-out transform hover:scale-105"
                 id="styled-profile"
                 role="tabpanel"
                 aria-labelledby="profile-tab"
               >
                 <p
-                  class="text-1xl font-bold text-purple-600 dark:text-gray-400"
+                  class="text-1xl font-bold text-purple-600 dark:text-gray-400 cursor-pointer"
+                  data-en="
+                  ⚡️【Latest Three Modes Connectivity】This wireless gaming
+                  mouse supports 3 modes of connection to meet a variety of user
+                  scenarios. Switch to 2.4G mode and Bluetooth mode when playing
+                  games, saving you the hassle of cable, and getting longer
+                  battery life. If that is not enough, you can also switch to
+                  traditional wired mode with the included rechargeable USB-C
+                  cable . Up to 3 devices can be connected simultaneously, such
+                  gaming mice are perfect for multi-device productivity.
+                  <br />
+                  ⚡️【Immersive RGB Backlight】True RGB effect,16.8 million
+                  colors for choice. This RGB gaming mouse has 7 kinds of RGB
+                  lighting effects such as streamer, horse racing, neon, solid
+                  color, etc to match your game style and desktop layout. All
+                  the light effect parameters can be customized with the
+                  attached software, giving you the best lighting experience.
+                  Light can be also turned off if you don't want it with the
+                  convenient switch under this computer mouse.
+                  <br />
+                  ⚡️【Pixel-Level Tracking Accuracy】The gaming mouse has a
+                  6-level DPI (1200-2400-3500-5000-7000-10000DPI) and 20G
+                  acceleration. This gaming mouse offers pixel-level accuracy
+                  for high-intensity gaming and daily office use. There are also
+                  4 polling rates (125-250-500-1000HZ) to reduce lag and ensure
+                  smooth motion.
+                  <br />
+                  ⚡️【8 Programmable Buttons & Quick Fire Button】RisoPhy
+                  wireless mouse supports macro editing, and all the buttons can
+                  be programmed with the easy-to-use software. The advantage is
+                  that the fire button（✈𝐨𝐧𝐞 𝐜𝐥𝐢𝐜𝐤 = 𝐭𝐫𝐢𝐩𝐥𝐞 𝐜𝐥𝐢𝐜𝐤𝐬） is on the
+                  left side of your index finger which is very easy to click,
+                  giving you the edge you need during those intense FPS battles.
+                  It is also great for MOBA/RTS games. NOTE: Programming
+                  software is only available on Windows and only supports wired
+                  mode.
+                  <br />
+                  ⚡️【Extreme Ergonomics & Professional After-Sales
+                  Service】This Bluetooth gaming mouse is designed for
+                  medium-sized hands, and if you have larger hands, you'll be
+                  amazed at how well-supported this gamer mouse is. Ring finger,
+                  pinky and thumb rest provide you with maxi"
+                data-es="⚡️【Última conectividad de tres modos】Este juego inalámbrico
+                El mouse admite 3 modos de conexión para satisfacer una variedad de usuarios.
+                escenarios. Cambie al modo 2.4G y al modo Bluetooth cuando juegue
+                juegos, ahorrándote la molestia del cable y alargando
+                duración de la batería. Si eso no es suficiente, también puedes cambiar a
+                modo cableado tradicional con el USB-C recargable incluido
+                cable. Se pueden conectar hasta 3 dispositivos simultáneamente, como
+                Los ratones para juegos son perfectos para la productividad en múltiples dispositivos.
+               
+                ⚡️【Retroiluminación RGB inmersiva】Efecto RGB verdadero, 16,8 millones
+                colores para elegir. Este mouse para juegos RGB tiene 7 tipos de RGB
+                efectos de iluminación como serpentina, carreras de caballos, neón, sólido
+                color, etc. para que coincida con el estilo de tu juego y el diseño de tu escritorio. Todo
+                Los parámetros del efecto de luz se pueden personalizar con el
+                Software adjunto, que le brinda la mejor experiencia de iluminación.
+                La luz también se puede apagar si no la deseas con el
+                conveniente interruptor debajo de este mouse de computadora.
+              
+                Precisión de seguimiento a nivel de ixel: el mouse para juegos tiene un
+                  DPI de 6 niveles (1200-2400-3500-5000-7000-10000DPI) y 20G
+                  aceleración. Este mouse para juegos ofrece precisión a nivel de píxeles
+                  para juegos de alta intensidad y uso diario en la oficina. También hay
+                  4 tasas de sondeo (125-250-500-1000 HZ) para reducir el retraso y garantizar
+                  movimiento suave.
+                 
+                  ⚡️【8 botones programables y botón de disparo rápido】RisoPhy
+                  El mouse inalámbrico admite la edición de macros y todos los botones pueden
+                  programarse con el software fácil de usar. La ventaja es
+                  que el botón de disparo（✈𝐨𝐧𝐞 𝐜𝐥𝐢𝐜𝐤 = 𝐭𝐫𝐢𝐩𝐥𝐞 𝐜𝐥𝐢𝐜𝐤𝐬） está en el
+                  lado izquierdo de su dedo índice, en el que es muy fácil hacer clic,
+                  dándote la ventaja que necesitas durante esas intensas batallas FPS.
+                  También es fantástico para juegos MOBA/RTS. NOTA: Programación
+                  El software solo está disponible en Windows y solo admite conexión por cable.
+                  modo.
+                 
+                  ⚡️【Ergonomía extrema y posventa profesional
+                  Servicio: este mouse para juegos Bluetooth está diseñado para
+                  manos medianas, y si tienes manos más grandes, serás
+                  Me sorprende el buen soporte que tiene este mouse para jugadores. Dedo anular,
+                  El meñique y el apoyo para el pulgar te proporcionan un máximo"
                 >
                   ⚡️【Latest Three Modes Connectivity】This wireless gaming
                   mouse supports 3 modes of connection to meet a variety of user
@@ -1108,67 +1130,66 @@ function toggleCart() {
         </main>
       </section>
 
-      <section
-        class="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6"
-      >
+      <section class="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mt-6">
         <main class="container mx-auto p-6">
           <div class="grid gap-4">
             <div class="grid grid-cols-2 gap-4">
-              <div>
+              <div class="animate-fadeIn delay-200">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img6.jpg"
-                  alt=""
+                  alt="Image 6"
                 />
               </div>
-              <div>
+              <div class=" animate-fadeIn delay-400">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img7.jpg"
-                  alt=""
+                  alt="Image 7"
                 />
               </div>
             </div>
             <div class="grid grid-cols-5 gap-4">
-              <div>
+              <div class=" animate-fadeIn delay-600">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img8.jpg"
-                  alt=""
+                  alt="Image 8"
                 />
               </div>
-              <div>
+              <div class="animate-fadeIn delay-800">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img9.jpg"
-                  alt=""
+                  alt="Image 9"
                 />
               </div>
-              <div>
+              <div class=" animate-fadeIn delay-1000">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img3.jpg"
-                  alt=""
+                  alt="Image 3"
                 />
               </div>
-              <div>
+              <div class="animate-fadeIn delay-1200">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img4.jpg"
-                  alt=""
+                  alt="Image 4"
                 />
               </div>
-              <div>
+              <div class=" animate-fadeIn delay-1400">
                 <img
-                  class="h-auto max-w-full rounded-lg"
+                  class="h-auto max-w-full rounded-lg transition-transform duration-300 transform hover:scale-105 hover:opacity-80"
                   src="assets/image/img5.jpg"
-                  alt=""
+                  alt="Image 5"
                 />
               </div>
             </div>
           </div>
         </main>
       </section>
+      
 
       <!-- WhatsApp Button -->
       <a
